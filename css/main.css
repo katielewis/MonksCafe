@@ -117,54 +117,156 @@ body {
 
 header {
   text-align: center;
-  
+  color: white;
+  border: 14px solid #0c3e93;
+}
+
+#extPhoto {
+  background: linear-gradient(
+                     rgba(20,20,20, .5), 
+                     rgba(20,20,20, .5)),
+                     url(../img/toms-restaurant.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+.center-content {
+  width:45%;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+  border: 7px solid white;
 }
 
 h1 {
   font-weight: 900;
-  font-size: 3rem;
+  font-size: 5rem;
   text-transform: uppercase;
-  margin: 2rem 0 0 0;
-
-
+  display:inline;
+  /*margin: 2rem 0 0 0; */
 }
 
-h2 {
+header p {
   font-weight: 700;
+  font-size: 2.5rem;
   margin: 0 0 2rem 0;
-  text-align: center;
-  clear:both;
 }
 
-h3 {
-}
+
 
 /* body =================================================================== */
 
-#extPhoto {
-    background-image: url(../img/toms-restaurant.jpg);
-    background-size: cover;
-    height: 45vh;
-    background-attachment: fixed;
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 5%;
+  clear:both;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 form {
   width: 50%;
   float: left;
-  padding: 4rem 10%;
+  padding: 0 10% 4rem 10%;
+}
+
+input {
+  width: 100%;
+  margin: .25rem 0 1.5rem 0;
+  border: 2px solid gray;
+  padding: 1rem;
+}
+
+input:active {
+  border: 2px solid #0c3e93;
 }
 
 aside {
   width: 50%;
   width: 50%;
   float: left;
-  padding: 4rem 10%;
+  padding: 0 10% 4rem 10%;
+}
+
+button {
+  color: #0c3e93;
+  border: 4px solid #0c3e93;
+  background-color: white;
+  padding: .5rem 1rem;
+  font-weight: 700;
+}
+
+button:hover {
+  color: white;
+  border: 4px solid #0c3e93;
+  background-color: #0c3e93;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+}
+
+td {
+  color: gray;
+}
+
+#jerryImg {
+  margin-left: 10%;
+  margin-bottom: 5%;
+  max-width: 50%;
+  float: left;
+}
+
+#jerryQuote {
+  width: 30%;
+  float: left;
+  color: #0c3e93;
+  border: 7px solid #0c3e93;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin-left: 5%;
+}
+
+#jerryQuote p {
+  margin: 0;
+}
+
+#jerryQuote p:last-of-type {
+  font-size: 1rem;
+  font-weight: 500;
+  padding-top: 1rem;
 }
 
 #map {
-  width: 100%;
+  width: 80%;
   height: 400px;
   background-color: grey;
+  margin:0 10%;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  clear:both;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer p:first-of-type {
+  font-weight: 700;
 }
 /* ==========================================================================
    Helper classes
