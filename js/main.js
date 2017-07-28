@@ -1,5 +1,5 @@
 function initMap() {
-  var monksLocation = {lat: 40.8054491, lng: -73.9654415};
+  var monksLocation = {lat: 37.788084, lng: -122.440861};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: monksLocation,
