@@ -47,6 +47,36 @@ $('form').on('submit', function(e) {
 
 });
 
+function formValidation() {
+  //right now, this error message is only showing when both fields are empty
+  //one field has a value, will submit
+  var dayText = $('.dropdown-toggle').text(reservationData.day);
+  var nameText = $('.reservation-name').val().length;
+
+  if (dayText === 'Select A Day') {
+
+    $('#formConfirm').text('Oops! You need to fill out the whole form.').addClass('closed');
+
+    console.log(dayText);
+
+    return false;
+
+
+    // if name text is 0, error message shows up but form still submits
+  } else if (nameText === 0) {
+
+    $('#formConfirm').text('Oops! You need to fill out the whole form.').addClass('closed');
+
+    console.log(nameText);
+
+    return false;
+
+  } else {  
+
+    return true;
+  } 
+}
+
 function getReservations() {
   database.ref('reservations').on('value', function (results) { // function to listen for any changes to the firebase database
     var allReservations = results.val(); //for any changes to the firebase database, get all reservations stored in the results we received
@@ -68,12 +98,15 @@ function getReservations() {
 
 getReservations();
 
+
 function openClosed() {
   var date = new Date();
   var hours = date.getHours();
   var minutes = date.getMinutes();
   var now = parseFloat(hours + "." + minutes);
   console.log(now);
+
+  //does not account for time zone difference...
 
   if (now > 8 && now < 20) {
     $('#hours').text('We are currently OPEN.').addClass('open').removeClass('closed');
