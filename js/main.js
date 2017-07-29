@@ -32,15 +32,13 @@ var reservationData = {};
 //makeing a reservation
 $('.reservation-day li').on('click', function() {
   reservationData.day = $(this).text(); //grabbing the text from the li and adding it as a property of the reservationData object
+  $('.dropdown-toggle').text(reservationData.day); //lacks caret
 });
 
-$('.reservation-form').on('submit', function(e) {
-  //see if name field has value (.length > 0) and resrevationData.day has .length >0
-    //if no, show an error message
+$('form').on('submit', function(e) {
 
-    //else this stuff
   e.preventDefault();
-  
+ 
   reservationData.name = $('.reservation-name').val(); //grabbing input value and adding it as a properity of the reservationData object
   
   var reservationsReference = database.ref('reservations'); //create a section for reservations data in database
@@ -69,3 +67,20 @@ function getReservations() {
 }
 
 getReservations();
+
+function openClosed() {
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var now = parseFloat(hours + "." + minutes);
+  console.log(now);
+
+  if (now > 8 && now < 20) {
+    $('#hours').text('We are currently OPEN.').addClass('open').removeClass('closed');
+  } else {
+    $('#hours').text('We are currently CLOSED.').addClass('closed').removeClass('open');
+  }
+
+}
+
+openClosed();

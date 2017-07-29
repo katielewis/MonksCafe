@@ -284,6 +284,14 @@ footer p:first-of-type {
   font-weight: 700;
 }
 
+.open {
+  color: #5c8537;
+}
+
+.closed {
+  color: #c1272d;
+}
+
 /* #jerryImg {
   margin-left: 10%;
   margin-bottom: 5%;
