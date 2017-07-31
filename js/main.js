@@ -120,6 +120,9 @@ $('form').on('submit', function(e) {
   
   reservationsReference.push(reservationData);// POST your reservationsData object to database using Firebase's .push() method
 
+  //this text in red shows for empty submit
+  $('#formConfirm').text('Yay, you are all set!').addClass('open');
+
 });
 
 function formValidation() {
@@ -183,7 +186,7 @@ function openClosed() {
 
   //does not account for time zone difference...
 
-  if (now > 8 && now < 20) {
+  if (now > 8 && now < 18) {
     $('#hours').text('We are currently OPEN.').addClass('open').removeClass('closed');
   } else {
     $('#hours').text('We are currently CLOSED.').addClass('closed').removeClass('open');
@@ -192,3 +195,28 @@ function openClosed() {
 }
 
 openClosed();
+
+
+// istagram
+var token = '198214635.d774ddc.417cc94ea317435c9952d0f8859ea1c3', // learn how to obtain it below
+    userid = self, // User ID - get it in source HTML of your Instagram profile or look at the next example :)
+    num_photos = 3; // how much photos do you want to get
+ 
+$.ajax({
+  url: 'https://api.instagram.com/v1/users/self/media/recent', // or /users/self/media/recent for Sandbox
+  dataType: 'jsonp',
+  type: 'GET',
+  data: {access_token: token, count: num_photos},
+  success: function(data){
+    console.log(data);
+    for( x in data.data ){
+      $('#rudr_instafeed').append('<li><img src="'+data.data[x].images.low_resolution.url+'"></li>'); // data.data[x].images.low_resolution.url - URL of image, 306х306
+      // data.data[x].images.thumbnail.url - URL of image 150х150
+      // data.data[x].images.standard_resolution.url - URL of image 612х612
+      // data.data[x].link - Instagram post URL 
+    }
+  },
+  error: function(data){
+    console.log(data); // send the error notifications to console
+  }
+});

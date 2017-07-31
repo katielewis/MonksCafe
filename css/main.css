@@ -209,6 +209,10 @@ section {
   margin-top: 5%;
 }
 
+#images img:first-of-type{
+  margin-bottom: 5%;
+}
+
 form {
   width: 100%;
   float: left;
@@ -290,6 +294,21 @@ footer p:first-of-type {
 
 .closed {
   color: #c1272d;
+}
+
+#rudr_instafeed {
+  list-style:none;  
+  text-align: left;
+}
+#rudr_instafeed li {
+  float:left;
+  width:auto;
+  height:200px;
+  margin:10px;
+}
+#rudr_instafeed li img {
+  max-width:100%;
+  max-height:100%;
 }
 
 /* #jerryImg {
