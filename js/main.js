@@ -113,36 +113,36 @@ $('form').on('submit', function(e) {
 
   e.preventDefault();
 
-  reservationData.day = $('#dropdown').val();// grabbing value of dropdown
+  formValidation();
 
-  reservationData.name = $('.reservation-name').val(); //grabbing input value and adding it as a properity of the reservationData object
-  
-  var reservationsReference = database.ref('reservations'); //create a section for reservations data in database
-  
-  reservationsReference.push(reservationData);// POST your reservationsData object to database using Firebase's .push() method
 
 });
 
 
 function formValidation() {
-  //right now, this error message is only showing when both fields are empty
-  //one field has a value, will submit
-  var dayText = $('#dropdown').val().length;
-  var nameText = $('.reservation-name').val().length;
+
+  reservationData.day = $('#dropdown').val();// grabbing value of dropdown
+
+  reservationData.name = $('.reservation-name').val(); //grabbing input value and adding it as a properity of the reservationData object
+  
+  var dayText = reservationData.day.length;
+  var nameText = reservationData.name.length;
+
   console.log(dayText);
   console.log(nameText);
 
   if (dayText > 0 && nameText > 0) {
+  
+    var reservationsReference = database.ref('reservations'); //create a section for reservations data in database
+  
+    reservationsReference.push(reservationData);// POST your reservationsData object to database using Firebase's .push() method
 
     $('#formConfirm').text('Yay, you are all set!').addClass('open').removeClass('closed');
 
-    return true;
-
   } else {  
 
-    $('#formConfirm').html('Oops! You need to fill out the whole form.').addClass('closed').removeClass('open');
+    $('#formConfirm').text('Oops! You need to fill out the whole form.').addClass('closed').removeClass('open');
 
-    return false;
   } 
 }
 function getReservations() {
