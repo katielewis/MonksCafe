@@ -39,18 +39,26 @@
 				<div class="form-group">
 				    <input type="text" class="form-control reservation-name" placeholder="Name">
 				</div>
+				<select id="dropdown">
+   					<option value="">-- Select A Day --</option>
+   					<option value="Today">Today</option>
+   					<option value="Tomorrow">Tomorrow</option>
+   					<option value="The day after next">The day after next</option>
+				</select>
+				<!-- start code 
 	    		<div class="form-group">
 					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select A Day
 							<span class="caret"></span>
 						</button>
+
 						<ul class="dropdown-menu reservation-day">
 							<li><a>Today</a></li>
 							<li><a>Tomorrow</a></li>
 							<li><a>The day after next</a></li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
     			<button class="btn btn-default" type="submit">Confirm</button>
     			<p id="formConfirm"></p>
 			</form>

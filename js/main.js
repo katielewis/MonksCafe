@@ -103,58 +103,48 @@ var database = firebase.database();
 
 var reservationData = {};
 
-
 //makeing a reservation
-$('.reservation-day li').on('click', function() {
-  reservationData.day = $(this).text(); //grabbing the text from the li and adding it as a property of the reservationData object
-  $('.dropdown-toggle').text(reservationData.day); //lacks caret
-});
+//$('.reservation-day li').on('click', function() {
+ // reservationData.day = $(this).text(); //grabbing the text from the li and adding it as a property of the reservationData object
+  //$('.dropdown-toggle').text(reservationData.day); //getting choice to show on button
+//});
 
 $('form').on('submit', function(e) {
 
   e.preventDefault();
- 
+
+  reservationData.day = $('#dropdown').val();// grabbing value of dropdown
+
   reservationData.name = $('.reservation-name').val(); //grabbing input value and adding it as a properity of the reservationData object
   
   var reservationsReference = database.ref('reservations'); //create a section for reservations data in database
   
   reservationsReference.push(reservationData);// POST your reservationsData object to database using Firebase's .push() method
 
-  //this text in red shows for empty submit
-  $('#formConfirm').text('Yay, you are all set!').addClass('open');
-
 });
+
 
 function formValidation() {
   //right now, this error message is only showing when both fields are empty
   //one field has a value, will submit
-  var dayText = $('.dropdown-toggle').text(reservationData.day);
+  var dayText = $('#dropdown').val().length;
   var nameText = $('.reservation-name').val().length;
+  console.log(dayText);
+  console.log(nameText);
 
-  if (dayText === 'Select A Day') {
+  if (dayText > 0 && nameText > 0) {
 
-    $('#formConfirm').text('Oops! You need to fill out the whole form.').addClass('closed');
+    $('#formConfirm').text('Yay, you are all set!').addClass('open').removeClass('closed');
 
-    console.log(dayText);
-
-    return false;
-
-
-    // if name text is 0, error message shows up but form still submits
-  } else if (nameText === 0) {
-
-    $('#formConfirm').text('Oops! You need to fill out the whole form.').addClass('closed');
-
-    console.log(nameText);
-
-    return false;
+    return true;
 
   } else {  
 
-    return true;
+    $('#formConfirm').html('Oops! You need to fill out the whole form.').addClass('closed').removeClass('open');
+
+    return false;
   } 
 }
-
 function getReservations() {
   database.ref('reservations').on('value', function (results) { // function to listen for any changes to the firebase database
     var allReservations = results.val(); //for any changes to the firebase database, get all reservations stored in the results we received
